@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+
+defineProps<{
+  msg: string
+}>()
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+        <h1>Practice!</h1>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/games">Games</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
@@ -36,6 +38,17 @@ nav {
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
+}
+
+h1{
+  font-weight: 500;
+  font-size: 2.6rem;
+  position: relative;
+  top: -10px;
+  color: brown;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 nav a.router-link-exact-active {

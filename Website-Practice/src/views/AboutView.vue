@@ -1,6 +1,15 @@
+<script setup>
+import { marked } from 'marked';
+import readme from '../../README.md?raw';
+
+const readmeContent = marked(readme);
+</script>
+
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>This will be a website for practice with html, css, and javascript.</h1>
+
+    <h4 v-html="readmeContent"></h4>
   </div>
 </template>
 
