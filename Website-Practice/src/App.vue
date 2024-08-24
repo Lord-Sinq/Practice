@@ -1,100 +1,74 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script>
+import { RouterLink } from 'vue-router';
+import Navbar from './components/Navbar.vue';
 
-defineProps<{
-  msg: string
-}>()
+export default {
+  name: 'App',
+  components: {
+    Navbar,
+  },
+};
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-        <h1>Practice!</h1>
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/games">Games</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div class="content-wrapper">
+    <div id="app">
+      <header>
+        <div id="header-container">
+          <h1>Practice!</h1>
+          <Navbar />
+        </div>
+      </header>
+      <!--Routed Content will appear here-->
+      <main>
+        <router-view />
+      </main>
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+/* Ensure the app container takes up the full width */
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
 }
-
-h1{
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-  color: brown;
-  display: flex;
-  text-align: center;
+/* The fixed navbar at the top */
+header {
+  position: fixed;
+  align-items: center;
   justify-content: center;
+  display: flex;
+  padding: 10px;
+  background-color: #333;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
+/* Container for the title and Navbar */
+#header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  max-width: 1200px;
 }
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+/* Padding for the main content to avoid being hidden by the fixed navbar */
+main {
+  margin-top: 80px; /* Adjust this value according to your navbar height */
+  padding: 20px;
+  align-content: center;
 }
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+/* Center the title */
+#title {
+  text-align: center;
+  margin-bottom: auto; /* Space between title and routed content */
 }
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    align-content: center;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-    
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+h1 {
+  margin: 0;
+  padding-right: 20px;
+  font-size: xx-large;
+  color: burlywood;
+} 
 </style>
